@@ -1,8 +1,8 @@
 import doctest
-from Line import Line
-from Point import Point_for_HC
+from Point_Iris import Point_for_Iris
+from Line_Iris import Line_Iris
 
-class H():
+class H_Iris():
 
     def __init__(self,best_rules,weight_rules, rules=8 ):
         self.best_rules=best_rules
