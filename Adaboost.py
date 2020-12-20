@@ -85,7 +85,7 @@ def adaboost(points,rules=8):
         for p in points: #normalized the point weight
             p.weight=p.weight/sum
 
-    ans= H( best_rules,weight_rules,8)
+    ans= H(best_rules,weight_rules,8)
 
     for p in points:
         p.weight=1
@@ -94,9 +94,9 @@ def adaboost(points,rules=8):
 
 
 def run_train(points, rules=8,times=10):
-    for i in range(1, rules + 1):
+    for i in range( 1,rules+1):
         multi_sum = 0
-
+        multi_sum1=0
         for j in range(times):
             learn = []
             test = []
@@ -116,30 +116,26 @@ def run_train(points, rules=8,times=10):
 
             ans_learn = adaboost(learn)
             rate = 0.0
+            rate1=0.0
 
 
             for p in learn:
-                if ans_learn.is_right(p):
+                if ans_learn.is_right_H(p,i):
                     rate += 1
             multi_sum += (rate / len(learn) * 100)
+
+
+            for p in test:
+                if ans_learn.is_right_H(p,i):
+                    rate1 += 1
+            multi_sum1 += (rate1 / len(test) * 100)
+
         multi_sum /= times
         print("Train: the rate of success for {} is {} percent ".format(i, multi_sum))
 
-    print("")
-
-        # on the best rules we get we need to run the point
-    rules_b=ans_learn.best_rules
-    for i in range(len(ans_learn.best_rules)):
-        multi_sum1 = 0
-        for j in range(times):
-            rate1 = 0
-            for p in test:
-                if rules_b[i].is_right(p):
-                    rate1 += 1
-            multi_sum1 += (rate1 / len(test) * 100)
         multi_sum1 /= times
         print("Test: the rate of success for {} is {} percent ".format(i, multi_sum1))
-
+        print("")
 
 
 
@@ -169,4 +165,3 @@ if __name__ == '__main__':
     for x in f:
         points.append(Point_for_HC(x))
     run_train(points, 8, 10)
-
