@@ -27,3 +27,6 @@ class Point_for_HC():
             # self.weight = np.longdouble(1)
             self.weight = 1.0
 
+
+
+
