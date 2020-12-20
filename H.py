@@ -32,22 +32,27 @@ class H():
     # return sign on one point
     def sign(self, p,k):
         sum = 0
-        for i in range(1,k+1):
+        for i in range(k):
+            #print("i : {}".format(i))
             if (self.best_rules[i].up):
-                if (self.best_rules[i].is_low(p)):
-                    sum -= self.weight_rules[i]
-                else:
-                    sum += self.weight_rules[i]
-            else:
-                if (self.best_rules[i].is_low(p)):
-                    sum += self.weight_rules[i]
-                else:
-                    sum -= self.weight_rules[i]
 
-            if (sum >= 0):
-                return 1
+                if (self.best_rules[i].is_low(p)):
+                    sum -= self.weight_rules[i]
+                else:
+                    sum += self.weight_rules[i]
             else:
-                return -1
+                if (self.best_rules[i].is_low(p)):
+                    sum += self.weight_rules[i]
+                else:
+                    sum -= self.weight_rules[i]
+           # print("i:{}, sum : {}".format(i, sum))
+        # for k in range(8):
+        #     print("best_rules[i] :  {}x+{} , i: {}".format(self.best_rules[k].m, self.best_rules[k].n,i))
+        if (sum >= 0):
+         #print("the k is {} and the sum is {} and the poin is {}, {}".format(k,sum,p.temperature, p.pulse))
+            return 1
+        else:
+            return -1
 
 
 

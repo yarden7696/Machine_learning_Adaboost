@@ -87,13 +87,14 @@ def adaboost(points,rules=8):
 
     ans= H(best_rules,weight_rules,8)
 
+
     for p in points:
         p.weight=1
 
     return ans
 
 
-def run_train(points, rules=8,times=10):
+def run_train(points, rules=8,times=1):
     for i in range( 1,rules+1):
         multi_sum = 0
         multi_sum1=0
@@ -122,8 +123,9 @@ def run_train(points, rules=8,times=10):
             for p in learn:
                 if ans_learn.is_right_H(p,i):
                     rate += 1
+                   # print("rate: {} ,i: {}, p: {},{}  ".format(rate, i,p.temperature,p.pulse))
             multi_sum += (rate / len(learn) * 100)
-
+            #print("multi_sum {} ,i: {}  ".format( multi_sum,i))
 
             for p in test:
                 if ans_learn.is_right_H(p,i):
@@ -164,4 +166,4 @@ if __name__ == '__main__':
     points = []
     for x in f:
         points.append(Point_for_HC(x))
-    run_train(points, 8, 10)
+    run_train(points, 8, 1)
