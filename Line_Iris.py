@@ -33,7 +33,3 @@ class Line_Iris():
             else:
                 return (p1.gender == -1)  ## all the -1 gender is above the line
 
-
-
-
-

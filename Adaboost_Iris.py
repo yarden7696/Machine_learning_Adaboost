@@ -1,4 +1,5 @@
 # got some help from github user we found https://github.com/eliahusatat/Machine-Learning
+
 import doctest
 import itertools
 import random
@@ -8,19 +9,42 @@ from Line_Iris import Line_Iris
 from H_Iris import H_Iris
 from Point_Iris import Point_for_Iris
 
+
+"""  version of python is 3.8"""
+
 """
-p3=Point_for_HC("5  1   -6")
-p4=Point_for_HC("4  -1  4")
-p5=Point_for_HC("2  1   -8")
-points=[]
-points.append(p3)
-points.append(p4)
-points.append(p5)
-line=Line((Point_for_HC("0   -1   -4"),Point_for_HC("2   1   0")))
-print(line.is_right(p3))
-points1=[]
-points1.append(p4)
-points1.append(p3)
+Results for Iris of 100 runs :
+Train: the rate of success for 1 is 95.79007048540973 percent 
+Test: the rate of success for 1 is 88.84525071391849 percent 
+
+Train: the rate of success for 2 is 95.32296656547611 percent 
+Test: the rate of success for 2 is 88.05921138189647 percent 
+
+Train: the rate of success for 3 is 96.85653606387723 percent 
+Test: the rate of success for 3 is 88.97728654484678 percent 
+
+Train: the rate of success for 4 is 96.89628077640391 percent 
+Test: the rate of success for 4 is 88.86257659566128 percent 
+
+Train: the rate of success for 5 is 98.13148312725687 percent 
+Test: the rate of success for 5 is 88.7424177297434 percent 
+
+Train: the rate of success for 6 is 98.15840722841033 percent 
+Test: the rate of success for 6 is 88.87828530048694 percent 
+
+Train: the rate of success for 7 is 98.50733885438872 percent 
+Test: the rate of success for 7 is 88.81806022974797 percent 
+
+Train: the rate of success for 8 is 98.66936544627275 percent 
+Test: the rate of success for 8 is 88.57381834591479 percent 
+"""
+
+""" Do you see overfitting? no 
+To get overffiting, the learning about the points of the train must be very good.
+In addition - given a new point from the test set we will not know how to classify it. 
+Its mean that the classification of the test points will be poor and will yield very low results relative to the train.
+We do not see this in Iris result because for the points of the test- we got good results that are close to the results
+of the train ,(the difference is 10 between the highest(train) and the lowest(test) and we think that its not to much). 
 """
 
 
@@ -139,22 +163,7 @@ def run_train(points, rules=8, times=100):
             print("Test: the rate of success for {} is {} percent ".format(i, avg2[i]))
             print("")
 
-"""
-    #shani change yarden need to approved
-    print("")
-    # on the best rules we get we need to run the point
-    for i in range(len(ans_learn.best_rules)):
-        multi_sum1 = 0
-        for j in range(times):
-            rate1 = 0
-            for p in test:
-                if ans_learn.best_rules[i].is_right(p):
-                    rate1 += 1
-            multi_sum1 += (rate1 / len(test) * 100)
-            print((rate1 / len(test) * 100))
-        multi_sum1 /= times
-        print("Test: the rate of success for {} is {} percent ".format(i, multi_sum1))
-"""
+
 if __name__ == '__main__':
 
     print("Iris:")
