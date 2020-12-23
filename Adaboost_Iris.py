@@ -1,5 +1,3 @@
-# got some help from github user we found https://github.com/eliahusatat/Machine-Learning
-
 import doctest
 import itertools
 import random
