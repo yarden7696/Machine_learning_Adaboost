@@ -1,4 +1,3 @@
-# got some help from github user we found https://github.com/eliahusatat/Machine-Learning
 import doctest
 import itertools
 import random
@@ -117,7 +116,6 @@ def adaboost(points,rules=8):
             p.weight=p.weight/sum
 
     ans= H(best_rules,weight_rules,8)
-
 
     for p in points:
         p.weight=1
